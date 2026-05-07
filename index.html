@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandhy González — Marketing Content Manager</title>
   <meta name="description" content="Portafolio profesional de Sandhy J. González M. — Marketing Content Manager con 14 años de experiencia en LATAM y EE.UU." />
   
@@ -11,99 +11,83 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── RESET & BASICS ── */
+    /* ── BASE ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d0d;
-      --bg2: #111111;
-      --bg3: #1a1a1a;
-      --bg4: #222222;
-      --gold: #c9a96e;
-      --gold-dim: #8a6f42;
-      --white: #ffffff;
-      --light: #cccccc;
-      --mid: #888888;
-      --dark: #444444;
+      --bg: #0d0d0d; --bg2: #111111; --bg3: #1a1a1a; --bg4: #222222;
+      --gold: #c9a96e; --gold-dim: #8a6f42; --white: #ffffff;
+      --light: #cccccc; --mid: #888888; --dark: #444444;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
     }
 
     html, body { 
       scroll-behavior: smooth; 
-      width: 100%;
-      overflow-x: hidden; /* CRITICO: Evita el movimiento lateral */
-    }
-
-    body {
+      width: 100%; 
+      overflow-x: hidden; /* Evita el scroll horizontal */
       background: var(--bg);
       color: var(--light);
       font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
     }
 
-    /* ── NAV ── */
+    /* ── NAV (CORREGIDO PARA MÓVIL) ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; /* Uso de porcentaje en lugar de px fijos */
-      height: 64px;
-      background: rgba(13,13,13,0.92);
+      padding: 0 20px;
+      height: auto; min-height: 64px;
+      background: rgba(13,13,13,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(201,169,110,0.15);
+      flex-wrap: wrap; /* Permite que el menú baje si no cabe */
     }
     .nav-logo {
-      font-family: var(--serif); font-size: 1rem; font-weight: 600;
-      color: var(--white); letter-spacing: 0.05em; text-decoration: none;
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
+      color: var(--white); text-decoration: none; padding: 10px 0;
     }
-    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links { 
+      display: flex; 
+      gap: 15px; 
+      list-style: none; 
+      flex-wrap: wrap; /* CLAVE: Los links saltan de línea en móvil */
+      justify-content: center;
+      padding-bottom: 10px;
+    }
     .nav-links a {
-      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--mid); text-decoration: none; transition: color 0.2s;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none; white-space: nowrap;
     }
 
-    /* ── HERO ── */
+    /* ── HERO (ESCRITORIO Y MÓVIL) ── */
     #hero {
       min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; 
+      grid-template-columns: 1fr 1fr; /* Dos columnas en PC */
       padding-top: 64px;
     }
     .hero-left {
       background: var(--bg2);
       border-right: 1px solid rgba(201,169,110,0.2);
-      padding: 60px 40px;
+      padding: 60px 5%;
       display: flex; flex-direction: column; justify-content: center;
-      position: relative; overflow: hidden;
     }
     .hero-name {
       font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 5rem);
       font-weight: 700; color: var(--white); line-height: 0.95;
     }
-    .hero-stats { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 30px; }
-    .stat-num { font-family: var(--serif); font-size: 2rem; color: var(--gold); font-weight: 700; }
+    .hero-right { padding: 60px 5%; }
 
-    .hero-right { padding: 60px 40px; }
+    /* ── CONTENEDORES ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 80px 0; border-bottom: 1px solid var(--bg4); }
 
-    /* ── SECTIONS ── */
-    section { padding: 60px 0; width: 100%; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-
-    /* ── RESPONSIVE FIXES ── */
-    @media (max-width: 900px) {
-      nav { height: auto; padding: 15px 20px; flex-direction: column; gap: 10px; }
-      .nav-links { gap: 10px; flex-wrap: wrap; justify-content: center; }
-      #hero { grid-template-columns: 1fr; }
-      .hero-left, .hero-right { padding: 40px 20px; border-right: none; }
-      .hero-left::before { font-size: 150px; bottom: -20px; }
-      .hero-name { text-align: center; }
-      .stat-block { text-align: center; flex: 1 1 100px; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 850px) {
+      #hero { grid-template-columns: 1fr; } /* Una columna en móvil */
+      .hero-left { border-right: none; border-bottom: 1px solid var(--bg4); }
+      .nav-links { gap: 10px; }
     }
-
-    /* Ajuste para que nada se salga */
-    img, table, div, p { max-width: 100%; overflow-wrap: break-word; }
   </style>
 </head>
 <body>
@@ -120,38 +104,40 @@
 
 <section id="hero">
   <div class="hero-left">
-      <div class="hero-tag">Portafolio</div>
-      <h1 class="hero-name">SANDHY<br>GONZÁLEZ</h1>
-      <div class="hero-title">Marketing Content Manager</div>
-      <div class="hero-stats">
-        <div class="stat-block"><div class="stat-num">14</div><div class="stat-label">Años Exp.</div></div>
-        <div class="stat-block"><div class="stat-num">9+</div><div class="stat-label">Países</div></div>
-      </div>
+    <div class="hero-tag" style="color:var(--gold); text-transform:uppercase; font-size:0.7rem; letter-spacing:2px;">Marketing Content Manager</div>
+    <h1 class="hero-name">SANDHY<br>GONZÁLEZ</h1>
+    <p style="margin-top:20px; color:var(--mid)">14 años conectando estrategias de contenido con resultados medibles en LATAM y EE.UU.</p>
   </div>
   <div class="hero-right">
-      <h2 style="color:var(--gold); margin-bottom:20px;">Perfil Profesional</h2>
-      <p>Profesional con 14 años de experiencia creando estrategias de contenido que conectan con audiencias y generan resultados medibles. Especialista en SEO, campañas digitales y redes sociales.</p>
+    <h2 style="font-family:var(--serif); color:var(--white); margin-bottom:15px;">Perfil Profesional</h2>
+    <p style="line-height:1.8;">Especialista en marketing de contenidos, SEO y campañas digitales. He liderado proyectos en medios y agencias B2B y B2C, logrando reconocimientos como el Premio Platino Fintech Americas 2024.</p>
   </div>
 </section>
 
 <section id="skills" style="background:var(--bg2)">
   <div class="container">
-    <h2 style="font-family:var(--serif); font-size:2.5rem; margin-bottom:30px; color:white">Habilidades</h2>
-    <div class="skills-grid">
-        <div class="skill-item">● Marketing de contenido estratégico</div>
-        <div class="skill-item">● SEO & SEM</div>
-        <div class="skill-item">● Storytelling</div>
-        <div class="skill-item">● IA Aplicada</div>
+    <h2 style="font-family:var(--serif); font-size:2.5rem; color:var(--white); margin-bottom:40px;">Habilidades & Experiencia</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px;">
+      <div>
+        <h3 style="color:var(--gold); font-size:0.8rem; text-transform:uppercase; margin-bottom:15px;">Estrategia</h3>
+        <p>• Marketing de Contenidos<br>• SEO Técnico y Semántico<br>• Paid Media (Ads)<br>• Email Marketing</p>
+      </div>
+      <div>
+        <h3 style="color:var(--gold); font-size:0.8rem; text-transform:uppercase; margin-bottom:15px;">Logros</h3>
+        <p>• Gestión en 9 países<br>• Premio Platino Fintech 2024<br>• Cobertura Internacional</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="contacto">
-    <div class="container" style="text-align:center">
-        <h2 style="font-family:var(--serif); font-size:3rem; color:white">Contacto</h2>
-        <p style="margin-top:20px">sandhygonzalez@gmail.com</p>
-        <p>Caracas, Venezuela</p>
+  <div class="container" style="text-align:center;">
+    <h2 style="font-family:var(--serif); font-size:3rem; color:var(--white);">Hablemos</h2>
+    <div style="margin-top:30px;">
+      <p>sandhygonzalez@gmail.com</p>
+      <p style="color:var(--gold); margin-top:10px;">Caracas, Venezuela • Remoto</p>
     </div>
+  </div>
 </section>
 
 </body>
