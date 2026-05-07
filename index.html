@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head><style>
+  /* Esto hace que las imágenes y el contenido no se salgan de la pantalla en móviles */
+  img, div, section {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ejemplo de Media Query: cambios que solo ocurren en pantallas menores a 600px */
+  @media (max-width: 600px) {
+    body {
+      font-size: 16px;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandhy González — Marketing Content Manager</title>
