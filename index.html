@@ -50,7 +50,42 @@
     .nav-logo {
       font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
       color: var(--white); letter-spacing: 0.05em; text-decoration: none;
+    }/* PARCHE RESPONSIVO */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    padding: 10px 20px !important;
+  }
+
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 5px 0 !important;
+  }
+
+  @media (max-width: 900px) {
+    #hero {
+      display: flex !important;
+      flex-direction: column !important;
     }
+    .hero-left, .hero-right {
+      width: 100% !important;
+      padding: 40px 20px !important;
+      border-right: none !important;
+    }
+    .hero-name {
+      font-size: 3rem !important;
+      text-align: center !important;
+    }
+  }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
