@@ -50,43 +50,45 @@
     .nav-logo {
       font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
       color: var(--white); letter-spacing: 0.05em; text-decoration: none;
-    }/* PARCHE RESPONSIVO */
-    
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav {
-    flex-wrap: wrap !important;
-    height: auto !important;
-    padding: 10px 20px !important;
-  }
-
-  .nav-links {
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    padding: 5px 0 !important;
-  }
-
-  @media (max-width: 900px) {
-    #hero {
-      display: flex !important;
-      flex-direction: column !important;
     }
-    .hero-left, .hero-right {
+
+    /* PARCHE RESPONSIVO */
+    html, body {
+      overflow-x: hidden !important;
       width: 100% !important;
-      padding: 40px 20px !important;
-      border-right: none !important;
+      margin: 0;
+      padding: 0;
     }
-    .hero-name {
-      font-size: 3rem !important;
-      text-align: center !important;
+
+    nav {
+      flex-wrap: wrap !important;
+      height: auto !important;
+      padding: 10px 20px !important;
     }
-  }
+
+    .nav-links {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      padding: 5px 0 !important;
+    }
+
+    @media (max-width: 900px) {
+      #hero {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .hero-left, .hero-right {
+        width: 100% !important;
+        padding: 40px 20px !important;
+        border-right: none !important;
+      }
+      .hero-name {
+        font-size: 3rem !important;
+        text-align: center !important;
+      }
+    }
+
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -409,6 +411,131 @@
       footer { flex-direction: column; gap: 8px; text-align: center; }
       .premio-box { padding: 28px 24px; }
     }
+
+    /* ══ IMPACTO section styles ══ */
+    /* Company label */
+    .company-label { margin-bottom: 20px; }
+    .company-name-imp {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700; color: var(--white); line-height: 1;
+    }
+    .company-descriptor {
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-top: 8px;
+    }
+
+    /* Unified impact grid — same card for all 3 companies */
+    .impact-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    }
+    .impact-card {
+      background: var(--bg3);
+      border: 1px solid var(--bg4);
+      border-radius: 8px;
+      padding: 32px 36px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .impact-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.35s ease;
+    }
+    .impact-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .impact-card:hover::before { height: 100%; }
+
+    .impact-card.highlight {
+      grid-column: 1 / -1;
+      background: rgba(26,20,0,0.55);
+      border-color: var(--gold-dim);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .highlight-icon {
+      font-size: 2.4rem; line-height: 1; padding-top: 6px;
+    }
+    .impact-card.highlight .card-headline { font-size: 1.9rem; }
+
+    .card-icon {
+      font-size: 1.4rem; margin-bottom: 14px; display: block; line-height: 1;
+    }
+    .card-kpi {
+      font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .card-headline {
+      font-family: var(--serif); font-size: 1.55rem; font-weight: 700;
+      color: var(--white); line-height: 1.1; margin-bottom: 10px;
+    }
+    .card-text {
+      font-size: 0.82rem; color: var(--light); line-height: 1.75;
+    }
+
+    /* Impacto page hero */
+    #impacto-hero {
+      min-height: 48vh;
+      display: flex; align-items: center;
+      background: var(--bg2);
+      border-bottom: 1px solid rgba(201,169,110,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    #impacto-hero::before {
+      content: 'IMPACTO';
+      position: absolute;
+      bottom: -30px; right: -20px;
+      font-family: var(--serif); font-size: clamp(100px, 18vw, 200px);
+      font-weight: 700; color: rgba(201,169,110,0.04);
+      line-height: 1; pointer-events: none; user-select: none;
+      white-space: nowrap;
+    }
+    .impacto-inner { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700; color: var(--white); line-height: 1.05;
+      max-width: 820px;
+    }
+    .page-title em { color: var(--gold); font-style: normal; }
+    .page-sub {
+      margin-top: 20px;
+      font-size: 0.9rem; color: var(--mid);
+      max-width: 580px; line-height: 1.7;
+    }
+
+    /* Impacto company sections */
+    #fapro { background: var(--bg); }
+    #eleva { background: var(--bg2); }
+    #teves { background: var(--bg); }
+
+    /* Cierre slogan */
+    #cierre {
+      background: var(--bg2);
+      border-top: 1px solid rgba(201,169,110,0.12);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cierre-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 700; color: var(--white); line-height: 1.1;
+      max-width: 680px; margin: 0 auto;
+    }
+    .cierre-heading em { color: var(--gold); font-style: normal; }
+    .cierre-rule {
+      width: 60px; height: 1px; background: var(--gold);
+      margin: 28px auto 0;
+    }
+
+    @media (max-width: 900px) {
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-card.highlight { grid-template-columns: 1fr; gap: 12px; }
+      .impacto-inner { padding: 48px 24px; }
+    }
   </style>
 </head>
 <body>
@@ -421,7 +548,7 @@
     <li><a href="#skills">Habilidades</a></li>
     <li><a href="#experience">Experiencia</a></li>
     <li><a href="#brands">Marcas</a></li>
-    <li><a href="#brands">Impacto</a></li>
+    <li><a href="#impacto-hero">Impacto</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
@@ -764,325 +891,31 @@
   </div>
 </section>
 
-  <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impacto — Sandhy González · Marketing Content Manager</title>
-  <meta name="description" content="Resultados cuantificables de Sandhy J. González M. — Liderazgo de marketing con impacto medible en Fapro SpA, Agencia Eleva y Fundación Teves." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!-- ══════════════════════════════════════════════════════
+     IMPACTO
+═══════════════════════════════════════════════════════ -->
 
-    :root {
-      --bg:        #0d0d0d;
-      --bg2:       #111111;
-      --bg3:       #1a1a1a;
-      --bg4:       #222222;
-      --gold:      #c9a96e;
-      --gold-dim:  #8a6f42;
-      --white:     #ffffff;
-      --light:     #cccccc;
-      --mid:       #888888;
-      --dark:      #444444;
-      --serif:     'Cormorant Garamond', Georgia, serif;
-      --sans:      'DM Sans', system-ui, sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--light);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px;
-      height: 64px;
-      background: rgba(13,13,13,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201,169,110,0.15);
-      flex-wrap: wrap;
-    }
-    .nav-logo {
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
-      color: var(--white); letter-spacing: 0.05em; text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 32px; list-style: none; flex-wrap: wrap; }
-    .nav-links a {
-      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--mid); text-decoration: none; transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--gold); }
-
-    /* ── PAGE HERO ── */
-    #page-hero {
-      padding-top: 64px;
-      min-height: 48vh;
-      display: flex; align-items: center;
-      background: var(--bg2);
-      border-bottom: 1px solid rgba(201,169,110,0.12);
-      position: relative;
-      overflow: hidden;
-    }
-    #page-hero::before {
-      content: 'IMPACTO';
-      position: absolute;
-      bottom: -30px; right: -20px;
-      font-family: var(--serif); font-size: clamp(100px, 18vw, 200px);
-      font-weight: 700; color: rgba(201,169,110,0.04);
-      line-height: 1; pointer-events: none; user-select: none;
-      white-space: nowrap;
-    }
-    .hero-inner { max-width: 1200px; margin: 0 auto; padding: 64px 48px; }
-    .hero-tag {
-      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 8px;
-    }
-    .hero-rule { width: 60px; height: 1px; background: var(--gold); margin-bottom: 32px; }
-    .page-title {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 700; color: var(--white); line-height: 1.05;
-      max-width: 820px;
-    }
-    .page-title em { color: var(--gold); font-style: normal; }
-    .page-sub {
-      margin-top: 20px;
-      font-size: 0.9rem; color: var(--mid);
-      max-width: 580px; line-height: 1.7;
-    }
-
-    /* ── SECTIONS ── */
-    section { padding: 96px 0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-
-    #fapro { background: var(--bg); }
-    #eleva { background: var(--bg2); }
-    #teves { background: var(--bg); }
-
-    /* Company label */
-    .company-label { margin-bottom: 20px; }
-    .company-name {
-      font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 700; color: var(--white); line-height: 1;
-    }
-    .company-descriptor {
-      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-top: 8px;
-    }
-    .section-rule {
-      width: 100%; height: 1px; background: var(--bg4); margin: 20px 0 40px;
-    }
-
-    /* ── UNIFIED IMPACT GRID ── */
-    /* All three companies use the exact same card markup & classes */
-    .impact-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-    }
-
-    .impact-card {
-      background: var(--bg3);
-      border: 1px solid var(--bg4);
-      border-radius: 8px;
-      padding: 32px 36px;
-      transition: border-color 0.25s, transform 0.25s;
-      position: relative; overflow: hidden;
-    }
-    .impact-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 3px; height: 0;
-      background: var(--gold);
-      transition: height 0.35s ease;
-    }
-    .impact-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
-    .impact-card:hover::before { height: 100%; }
-
-    /* Highlight card — full width, slightly amber-tinted */
-    .impact-card.highlight {
-      grid-column: 1 / -1;
-      background: rgba(26,20,0,0.55);
-      border-color: var(--gold-dim);
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 32px;
-      align-items: flex-start;
-    }
-    .highlight-icon {
-      font-size: 2.4rem; line-height: 1; padding-top: 6px;
-    }
-    .impact-card.highlight .card-headline { font-size: 1.9rem; }
-
-    /* Card inner elements — identical across all companies */
-    .card-icon {
-      font-size: 1.4rem; margin-bottom: 14px; display: block; line-height: 1;
-    }
-    .card-kpi {
-      font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 6px;
-    }
-    .card-headline {
-      font-family: var(--serif); font-size: 1.55rem; font-weight: 700;
-      color: var(--white); line-height: 1.1; margin-bottom: 10px;
-    }
-    .card-text {
-      font-size: 0.82rem; color: var(--light); line-height: 1.75;
-    }
-
-    /* ── CIERRE / SLOGAN ── */
-    #cierre {
-      background: var(--bg2);
-      border-top: 1px solid rgba(201,169,110,0.12);
-      padding: 80px 0;
-      text-align: center;
-    }
-    .cierre-heading {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      font-weight: 700; color: var(--white); line-height: 1.1;
-      max-width: 680px; margin: 0 auto;
-    }
-    .cierre-heading em { color: var(--gold); font-style: normal; }
-    .cierre-rule {
-      width: 60px; height: 1px; background: var(--gold);
-      margin: 28px auto 0;
-    }
-
-    /* ── CONTACT ── */
-    #contacto {
-      background: var(--bg);
-      min-height: 70vh; display: flex; align-items: center;
-    }
-    .contact-inner { text-align: center; }
-    .contact-big {
-      font-family: var(--serif); font-size: clamp(4rem, 10vw, 9rem);
-      font-weight: 700; color: var(--white); line-height: 0.9;
-      position: relative;
-    }
-    .contact-big::after {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(201,169,110,0.15);
-      transform: translate(4px, 4px);
-      z-index: -1;
-    }
-    .contact-sub {
-      font-size: 1rem; color: var(--gold); margin-top: 16px; letter-spacing: 0.05em;
-    }
-    .contact-rule {
-      width: 80px; height: 1px; background: var(--gold); margin: 24px auto;
-    }
-    .contact-grid {
-      display: grid; grid-template-columns: repeat(3, auto); gap: 0;
-      justify-content: center; margin-top: 48px;
-    }
-    .contact-block {
-      padding: 32px 48px; border: 1px solid var(--bg4);
-      transition: border-color 0.2s; text-align: center;
-    }
-    .contact-block:hover { border-color: var(--gold-dim); }
-    .contact-block-label {
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 8px;
-    }
-    .contact-block a, .contact-block p {
-      font-size: 0.88rem; color: var(--light); text-decoration: none;
-      display: block; transition: color 0.2s;
-    }
-    .contact-block a:hover { color: var(--white); }
-    .contact-extra {
-      margin-top: 40px; font-size: 0.8rem; color: var(--mid);
-    }
-    .contact-extra span { color: var(--gold); }
-    .tagline {
-      margin-top: 72px; font-family: var(--serif);
-      font-size: 1.1rem; font-style: italic; color: var(--mid);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--bg4);
-      padding: 20px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    footer p { font-size: 0.75rem; color: var(--dark); }
-    footer a { color: var(--gold-dim); text-decoration: none; }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 10px 20px; height: auto; }
-      .nav-links { gap: 14px; justify-content: center; padding: 5px 0; }
-      .hero-inner { padding: 48px 24px; }
-      .container { padding: 0 24px; }
-      .impact-grid { grid-template-columns: 1fr; }
-      .impact-card.highlight { grid-template-columns: 1fr; gap: 12px; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .contact-block { padding: 24px 28px; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">Sandhy González</a>
-  <ul class="nav-links">
-    <li><a href="index.html#hero">Perfil</a></li>
-    <li><a href="index.html#skills">Habilidades</a></li>
-    <li><a href="index.html#experience">Experiencia</a></li>
-    <li><a href="index.html#brands">Marcas</a></li>
-    <li><a href="impacto.html" class="active">Impacto</a></li>
-    <li><a href="index.html#contacto">Contacto</a></li>
-  </ul>
-</nav>
-
-<!-- PAGE HERO -->
-<section id="page-hero">
-  <div class="hero-inner">
+<!-- IMPACTO HERO -->
+<section id="impacto-hero">
+  <div class="impacto-inner">
     <div class="hero-tag reveal">Resultados · Métricas · Logros</div>
     <div class="hero-rule reveal"></div>
-    <h1 class="page-title reveal">
+    <h2 class="page-title reveal">
       Transformando estrategia en <em>revenue</em>:<br>
       Liderazgo de Marketing en ecosistemas B2B y B2C
-    </h1>
+    </h2>
     <p class="page-sub reveal">Una selección de evidencias de gestión: decisiones estratégicas, ejecución medible y resultados que hablan por sí solos.</p>
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     FAPRO SpA
-═══════════════════════════════ -->
+<!-- FAPRO SpA -->
 <section id="fapro">
   <div class="container">
-
     <div class="company-label reveal">
-      <div class="company-name">Fapro SpA</div>
+      <div class="company-name-imp">Fapro SpA</div>
       <div class="company-descriptor">Autoridad de marca &amp; Pipeline comercial</div>
     </div>
     <div class="section-rule"></div>
-
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
@@ -1119,18 +952,14 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     AGENCIA ELEVA
-═══════════════════════════════ -->
+<!-- AGENCIA ELEVA -->
 <section id="eleva">
   <div class="container">
-
     <div class="company-label reveal">
-      <div class="company-name">Agencia Eleva</div>
+      <div class="company-name-imp">Agencia Eleva</div>
       <div class="company-descriptor">Performance &amp; ROI</div>
     </div>
     <div class="section-rule"></div>
-
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
@@ -1160,18 +989,14 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     FUNDACIÓN TEVES
-═══════════════════════════════ -->
+<!-- FUNDACIÓN TEVES -->
 <section id="teves">
   <div class="container">
-
     <div class="company-label reveal">
-      <div class="company-name">Fundación Teves</div>
+      <div class="company-name-imp">Fundación Teves</div>
       <div class="company-descriptor">Operaciones &amp; Logística</div>
     </div>
     <div class="section-rule"></div>
-
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
@@ -1201,9 +1026,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     CIERRE / SLOGAN
-═══════════════════════════════ -->
+<!-- CIERRE SLOGAN -->
 <section id="cierre">
   <div class="container">
     <div class="cierre-heading reveal">
@@ -1213,64 +1036,7 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════
-     CONTACTO
-═══════════════════════════════ -->
-<section id="contacto">
-  <div class="container">
-    <div class="contact-inner reveal">
-      <div class="contact-big" data-text="¡HABLEMOS!" style="font-size: 2.5rem !important;">¡HABLEMOS!</div>
-      <div class="contact-sub">Estoy lista para tu próximo proyecto o gestión de marca</div>
-      <div class="contact-rule"></div>
 
-      <div class="contact-grid">
-        <div class="contact-block">
-          <div class="contact-block-label">Correo</div>
-          <a href="mailto:sandhygonzalez@gmail.com">sandhygonzalez@gmail.com</a>
-        </div>
-        <div class="contact-block">
-          <div class="contact-block-label">Teléfono / WhatsApp</div>
-          <a href="https://wa.link/87nidb" target="_blank">+58 412 560 4969</a>
-        </div>
-        <div class="contact-block">
-          <div class="contact-block-label">LinkedIn</div>
-          <a href="https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/" target="_blank">linkedin.com/in/sandhy-gonzalez-periodista-digital</a>
-        </div>
-      </div>
-
-      <div class="contact-extra">
-        <p>Ubicación: <span>Caracas, Venezuela</span> · Disponible para proyectos remotos</p>
-        <p style="margin-top:8px">Métodos de pago: <span>PayPal · Binance</span></p>
-      </div>
-
-      <div class="tagline">"Conectar con el público objetivo es la esencia."</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 Sandhy J. González M. — Todos los derechos reservados.</p>
-  <p><a href="mailto:sandhygonzalez@gmail.com">sandhygonzalez@gmail.com</a></p>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.08 });
-
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 4) * 0.07}s`;
-    observer.observe(el);
-  });
-</script>
-</body>
-</html>
-  
 <!-- CONTACT -->
 <section id="contacto">
   <div class="container">
