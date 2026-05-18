@@ -105,7 +105,7 @@
     .hero-left {
       background: var(--bg2);
       border-right: 1px solid rgba(201,169,110,0.2);
-      padding: 80px 56px;
+      padding: 60px 56px;
       display: flex; flex-direction: column; justify-content: space-between;
       position: relative; overflow: hidden;
     }
@@ -138,7 +138,7 @@
 
     /* Stats */
     .hero-stats {
-      display: flex; gap: 32px; margin-top: 48px;
+      display: flex; gap: 32px; margin-top: 32px;
     }
     .stat-block {}
     .stat-num {
@@ -163,8 +163,8 @@
 
     /* Hero right */
     .hero-right {
-      padding: 80px 56px;
-      display: flex; flex-direction: column; justify-content: flex-start; gap: 48px;
+      padding: 60px 56px;
+      display: flex; flex-direction: column; justify-content: flex-start; gap: 36px;
     }
     .section-label {
       font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
@@ -190,7 +190,7 @@
     .exp-desc { font-size: 0.82rem; color: var(--light); line-height: 1.65; }
 
     /* ── SECTION WRAPPER ── */
-    section { padding: 96px 0; }
+    section { padding: 60px 0; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 
     .section-heading {
@@ -203,7 +203,7 @@
     /* ── SKILLS ── */
     #skills { background: var(--bg2); }
     .skills-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 56px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 40px;
     }
     .skills-col {}
     .skills-col-title {
@@ -254,7 +254,7 @@
     /* ── EXPERIENCE TIMELINE ── */
     #experience { background: var(--bg); }
     .timeline {
-      position: relative; margin-top: 56px;
+      position: relative; margin-top: 40px;
       display: grid; grid-template-columns: 1fr 2px 1fr; gap: 0;
     }
     .timeline-line {
@@ -288,7 +288,7 @@
     /* ── BRANDS ── */
     #brands { background: var(--bg2); }
     .brands-grid {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px;
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
     }
     .brand-pill {
       padding: 8px 18px; border-radius: 6px; font-size: 0.82rem; font-weight: 500;
@@ -306,7 +306,7 @@
 
     /* Premio box */
     .premio-box {
-      margin-top: 48px; padding: 40px 48px;
+      margin-top: 32px; padding: 32px 40px;
       border: 1px solid var(--gold-dim); border-radius: 8px;
       background: rgba(26,20,0,0.6);
       position: relative; overflow: hidden;
@@ -326,7 +326,7 @@
     /* ── CONTACT ── */
     #contacto {
       background: var(--bg);
-      min-height: 70vh; display: flex; align-items: center;
+      min-height: 55vh; display: flex; align-items: center;
     }
     .contact-inner { text-align: center; }
     .contact-big {
@@ -350,7 +350,7 @@
     }
     .contact-grid {
       display: grid; grid-template-columns: repeat(3, auto); gap: 0;
-      justify-content: center; margin-top: 48px;
+      justify-content: center; margin-top: 32px;
     }
     .contact-block {
       padding: 32px 48px; border: 1px solid var(--bg4);
@@ -367,12 +367,12 @@
     }
     .contact-block a:hover { color: var(--white); }
     .contact-extra {
-      margin-top: 40px; font-size: 0.8rem; color: var(--mid);
+      margin-top: 24px; font-size: 0.8rem; color: var(--mid);
     }
     .contact-extra span { color: var(--gold); }
 
     .tagline {
-      margin-top: 72px; font-family: var(--serif);
+      margin-top: 40px; font-family: var(--serif);
       font-size: 1.1rem; font-style: italic; color: var(--mid);
     }
 
@@ -414,7 +414,7 @@
 
     /* ══ IMPACTO section styles ══ */
     /* Company label */
-    .company-label { margin-bottom: 20px; }
+    .company-label { margin-bottom: 14px; }
     .company-name-imp {
       font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 700; color: var(--white); line-height: 1;
@@ -426,13 +426,13 @@
 
     /* Unified impact grid — same card for all 3 companies */
     .impact-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
     }
     .impact-card {
       background: var(--bg3);
       border: 1px solid var(--bg4);
       border-radius: 8px;
-      padding: 32px 36px;
+      padding: 24px 28px;
       transition: border-color 0.25s, transform 0.25s;
       position: relative; overflow: hidden;
     }
@@ -477,7 +477,7 @@
 
     /* Impacto page hero */
     #impacto-hero {
-      min-height: 48vh;
+      min-height: 36vh;
       display: flex; align-items: center;
       background: var(--bg2);
       border-bottom: 1px solid rgba(201,169,110,0.12);
@@ -488,22 +488,22 @@
       content: 'IMPACTO';
       position: absolute;
       bottom: -30px; right: -20px;
-      font-family: var(--serif); font-size: clamp(100px, 18vw, 200px);
+      font-family: var(--serif); font-size: clamp(56px, 9vw, 110px);
       font-weight: 700; color: rgba(201,169,110,0.04);
       line-height: 1; pointer-events: none; user-select: none;
       white-space: nowrap;
     }
-    .impacto-inner { max-width: 1200px; margin: 0 auto; padding: 80px 48px; }
+    .impacto-inner { max-width: 1200px; margin: 0 auto; padding: 52px 48px; }
     .page-title {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 700; color: var(--white); line-height: 1.05;
-      max-width: 820px;
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 400; color: var(--light); line-height: 1.6;
+      max-width: 680px; margin-top: 14px;
     }
     .page-title em { color: var(--gold); font-style: normal; }
     .page-sub {
-      margin-top: 20px;
-      font-size: 0.9rem; color: var(--mid);
+      margin-top: 10px;
+      font-size: 0.82rem; color: var(--mid);
       max-width: 580px; line-height: 1.7;
     }
 
@@ -516,7 +516,7 @@
     #cierre {
       background: var(--bg2);
       border-top: 1px solid rgba(201,169,110,0.12);
-      padding: 80px 0;
+      padding: 52px 0;
       text-align: center;
     }
     .cierre-heading {
@@ -534,7 +534,7 @@
     @media (max-width: 900px) {
       .impact-grid { grid-template-columns: 1fr; }
       .impact-card.highlight { grid-template-columns: 1fr; gap: 12px; }
-      .impacto-inner { padding: 48px 24px; }
+      .impacto-inner { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -888,6 +888,7 @@
       <div class="premio-title">🏆 Premio Platino — Fintech Americas 2024</div>
       <p class="premio-text">Mi visión estratégica me permitió elevar el Brand Awareness de Fapro SpA y construir su autoridad de marca más allá de sus propios canales digitales. Estuve a cargo, tanto de la estrategia de contenido como del pitch de postulación que le otorgó a la marca este reconocimiento; una pieza clave donde sinteticé los hitos de nuestra gestión para asegurar un posicionamiento de alto impacto en la industria Fintech.</p>
     </div>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════
@@ -897,12 +898,12 @@
 <!-- IMPACTO HERO -->
 <section id="impacto-hero">
   <div class="impacto-inner">
-    <div class="hero-tag reveal">Resultados · Métricas · Logros</div>
-    <div class="hero-rule reveal"></div>
-    <h4 class="page-title reveal">
-      Transformando estrategia en <em>revenue</em>:<br>
-      Liderazgo de Marketing en ecosistemas B2B y B2C
-    </h4>
+    <div class="reveal">
+      <h2 class="section-heading">RESULTADOS, MÉTRICAS <em>&amp; LOGROS</em></h2>
+      <p class="section-intro">Muestra de gestión estratégica con resultados cuantificables</p>
+    </div>
+    <div class="section-rule reveal" style="margin-top:16px;margin-bottom:0;"></div>
+    <p class="page-title reveal">Transformando estrategia en revenue: Liderazgo de Marketing en ecosistemas B2B y B2C</p>
     <p class="page-sub reveal">Una selección de evidencias de gestión: decisiones estratégicas, ejecución medible y resultados que hablan por sí solos.</p>
   </div>
 </section>
@@ -911,8 +912,7 @@
 <section id="fapro">
   <div class="container">
     <div class="company-label reveal">
-      <div class="company-name-imp">Fapro SpA</div>
-      <div class="company-descriptor">Autoridad de marca &amp; Pipeline comercial</div>
+      <h2 class="section-heading">AUTORIDAD DE MARCA <em>&amp; PIPELINE</em></h2>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
@@ -936,7 +936,7 @@
       <div class="impact-card reveal">
         <span class="card-icon">🔍</span>
         <div class="card-kpi">Reach · SEO</div>
-        <div class="card-headline">SEO Score: +80</div>
+        <div class="card-headline">SEO Score: 80 Puntos</div>
         <div class="card-text">Escalabilidad orgánica y optimización de visibilidad digital en mercados competitivos.</div>
       </div>
 
@@ -955,8 +955,7 @@
 <section id="eleva">
   <div class="container">
     <div class="company-label reveal">
-      <div class="company-name-imp">Agencia Eleva</div>
-      <div class="company-descriptor">Performance &amp; ROI</div>
+      <h2 class="section-heading">PERFORMANCE <em>&amp; ROI</em></h2>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
@@ -992,8 +991,7 @@
 <section id="teves">
   <div class="container">
     <div class="company-label reveal">
-      <div class="company-name-imp">Fundación Teves</div>
-      <div class="company-descriptor">Operaciones &amp; Logística</div>
+      <h2 class="section-heading">OPERACIONES <em>&amp; LOGÍSTICA</em></h2>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
