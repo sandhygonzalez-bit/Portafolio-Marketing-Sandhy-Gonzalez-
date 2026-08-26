@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sandhy González — Marketing Content Manager</title>
   <meta name="description" content="Portafolio profesional de Sandhy J. González M. — Marketing Content Manager con 14 años de experiencia en LATAM y EE.UU." />
+  <meta name="author" content="Sandhy J. González M." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d0d0d" />
+  <meta name="keywords" content="Marketing Content Manager, Sandhy González, marketing digital, SEO, contenido estratégico, LATAM, B2B, B2C, Fintech, portafolio" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sandhy González — Marketing Content Manager" />
+  <meta property="og:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sandhy González — Marketing Content Manager" />
+  <meta name="twitter:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -351,11 +366,11 @@
       width: 80px; height: 1px; background: var(--gold); margin: 24px auto;
     }
     .contact-grid {
-      display: grid; grid-template-columns: repeat(3, auto); gap: 0;
+      display: grid; grid-template-columns: auto; gap: 0;
       justify-content: center; margin-top: 16px;
     }
     .contact-block {
-      padding: 20px 36px; border: 1px solid var(--bg4);
+      padding: 16px 48px; border: 1px solid var(--bg4);
       transition: border-color 0.2s; text-align: center;
     }
     .contact-block:hover { border-color: var(--gold-dim); }
@@ -530,13 +545,32 @@
       .impacto-inner { padding: 16px 20px; }
     }
   </style>
+
+  <!-- Structured Data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sandhy J. González M.",
+    "jobTitle": "Marketing Content Manager",
+    "description": "Especialista en marketing de contenidos, SEO y campañas digitales con 14 años de experiencia en LATAM y EE.UU.",
+    "url": "https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/",
+    "sameAs": ["https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/"],
+    "knowsLanguage": ["es", "en"],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "Universidad Monteávila"},
+      {"@type": "CollegeOrUniversity", "name": "Universidad Santa María"}
+    ]
+  }
+  </script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Ir al contenido principal</a>
 
 <!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">Sandhy González</a>
-  <ul class="nav-links">
+<nav role="navigation" aria-label="Menú principal">
+  <a href="#hero" class="nav-logo" aria-label="Sandhy González — Inicio">Sandhy González</a>
+  <ul class="nav-links" role="list">
     <li><a href="#hero">Perfil</a></li>
     <li><a href="#skills">Habilidades</a></li>
     <li><a href="#experience">Experiencia</a></li>
@@ -546,50 +580,44 @@
   </ul>
 </nav>
 
+<main id="main-content">
+
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-labelledby="hero-heading">
   <div class="hero-left">
     <div>
-      <div class="hero-tag">Portafolio</div>
+      <p class="hero-tag">Portafolio</p>
       <div class="hero-rule"></div>
-      <h1 class="hero-name">
-        <span>SANDHY</span>
-        <span>GONZÁLEZ</span>
+      <h1 class="hero-name" id="hero-heading" aria-label="Sandhy González">
+        <span aria-hidden="true">SANDHY</span>
+        <span aria-hidden="true">GONZÁLEZ</span>
       </h1>
-      <div class="hero-title">Marketing Content Manager</div>
-      <div class="hero-sub">Licenciada en Comunicación Social · Especialista en Periodismo Digital</div>
+      <p class="hero-title">Marketing Content Manager</p>
+      <p class="hero-sub">Licenciada en Comunicación Social · Especialista en Periodismo Digital</p>
 
-      <div class="hero-stats">
-        <div class="stat-block">
-          <div class="stat-num">14</div>
-          <div class="stat-label">Años de<br>experiencia</div>
+      <div class="hero-stats" role="list" aria-label="Estadísticas profesionales">
+        <div class="stat-block" role="listitem" aria-label="14 años de experiencia">
+          <div class="stat-num" aria-hidden="true">14</div>
+          <div class="stat-label" aria-hidden="true">Años de<br>experiencia</div>
         </div>
-        <div class="stat-block">
-          <div class="stat-num">9+</div>
-          <div class="stat-label">Gestión de marca<br>en 9 países</div>
+        <div class="stat-block" role="listitem" aria-label="Gestión de marca en 9 países">
+          <div class="stat-num" aria-hidden="true">9+</div>
+          <div class="stat-label" aria-hidden="true">Gestión de marca<br>en 9 países</div>
         </div>
-        <div class="stat-block">
-          <div class="stat-num">🏆</div>
-          <div class="stat-label">Premio Platino<br>Fintech 2024</div>
+        <div class="stat-block" role="listitem" aria-label="Premio Platino Fintech 2024">
+          <div class="stat-num" aria-hidden="true">🏆</div>
+          <div class="stat-label" aria-hidden="true">Premio Platino<br>Fintech 2024</div>
         </div>
       </div>
     </div>
 
     <div class="hero-contact">
       <div class="contact-item">
-        <span class="contact-icon">✉</span>
-        <a href="mailto:sandhygonzalez@gmail.com">sandhygonzalez@gmail.com</a>
+        <span class="contact-icon" aria-hidden="true">in</span>
+        <a href="https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Sandhy González">linkedin.com/in/sandhy-gonzalez-periodista-digital</a>
       </div>
       <div class="contact-item">
-        <span class="contact-icon">☎</span>
-        <a href="https://wa.link/87nidb" target="_blank">+58 412 560 4969</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">in</span>
-        <a href="https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/" target="_blank">linkedin.com/in/sandhy-gonzalez-periodista-digital</a>
-      </div>
-      <div class="contact-item">
-        <span class="contact-icon">📍</span>
+        <span class="contact-icon" aria-hidden="true">📍</span>
         <span>Caracas, Venezuela · Disponible para proyectos remotos</span>
       </div>
     </div>
@@ -646,10 +674,10 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<section id="skills" aria-labelledby="skills-heading">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-heading">HABILIDADES &amp; <em>FORMACIÓN</em></h2>
+      <h2 class="section-heading" id="skills-heading">HABILIDADES &amp; <em>FORMACIÓN</em></h2>
       <p class="section-intro">Competencias, certificaciones y formación académica</p>
     </div>
 
@@ -743,16 +771,16 @@
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" aria-labelledby="experience-heading">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-heading">EXPERIENCIA <em>LABORAL</em></h2>
+      <h2 class="section-heading" id="experience-heading">EXPERIENCIA <em>LABORAL</em></h2>
       <p class="section-intro">Trayectoria profesional completa</p>
     </div>
 
-    <div class="timeline">
+    <div class="timeline" role="list" aria-label="Trayectoria profesional">
       <!-- LEFT COL -->
-      <div class="timeline-col left">
+      <div class="timeline-col left" role="listitem">
         <div class="tl-item left">
           <div class="tl-role">Marketing Content Manager</div>
           <div class="tl-company">Fapro SpA</div>
@@ -795,7 +823,7 @@
       <div class="timeline-line"></div>
 
       <!-- RIGHT COL -->
-      <div class="timeline-col right">
+      <div class="timeline-col right" role="listitem">
         <div class="tl-item right" style="margin-top:0">
           <div class="tl-role">Paid Social Media Manager</div>
           <div class="tl-company">Agencia Eleva</div>
@@ -838,28 +866,28 @@
 </section>
 
 <!-- BRANDS -->
-<section id="brands">
+<section id="brands" aria-labelledby="brands-heading">
   <div class="container">
     <div class="reveal">
-      <h2 class="section-heading">MARCAS CON LAS QUE <em>HE TRABAJADO</em></h2>
+      <h2 class="section-heading" id="brands-heading">MARCAS CON LAS QUE <em>HE TRABAJADO</em></h2>
       <p class="section-intro">He colaborado con marcas de Argentina, Chile, Colombia, Costa Rica, Ecuador, El Salvador, Guatemala, EE.UU. y Venezuela.</p>
     </div>
 
-    <div class="brands-grid reveal">
-      <div class="brand-pill">Fapro SpA</div>
-      <div class="brand-pill">Agencia Eleva</div>
-      <div class="brand-pill">PropTech Latam</div>
-      <div class="brand-pill">Tu Medico.com</div>
-      <div class="brand-pill">Yield Experiencias Digitales</div>
-      <div class="brand-pill">Más que Digital</div>
-      <div class="brand-pill">Telesur</div>
-      <div class="brand-pill">Primicias24</div>
-      <div class="brand-pill">Almomento360</div>
-      <div class="brand-pill">Vapro Publicidad</div>
-      <div class="brand-pill">Fundación TEVES</div>
-      <div class="brand-pill">Global Media Review</div>
-      <div class="brand-pill">AYCO Guatemala</div>
-      <div class="brand-pill">ESPAE Escuela de Negocios</div>
+    <div class="brands-grid reveal" role="list" aria-label="Marcas con las que he colaborado">
+      <div class="brand-pill" role="listitem">Fapro SpA</div>
+      <div class="brand-pill" role="listitem">Agencia Eleva</div>
+      <div class="brand-pill" role="listitem">PropTech Latam</div>
+      <div class="brand-pill" role="listitem">Tu Medico.com</div>
+      <div class="brand-pill" role="listitem">Yield Experiencias Digitales</div>
+      <div class="brand-pill" role="listitem">Más que Digital</div>
+      <div class="brand-pill" role="listitem">Telesur</div>
+      <div class="brand-pill" role="listitem">Primicias24</div>
+      <div class="brand-pill" role="listitem">Almomento360</div>
+      <div class="brand-pill" role="listitem">Vapro Publicidad</div>
+      <div class="brand-pill" role="listitem">Fundación TEVES</div>
+      <div class="brand-pill" role="listitem">Global Media Review</div>
+      <div class="brand-pill" role="listitem">AYCO Guatemala</div>
+      <div class="brand-pill" role="listitem">ESPAE Escuela de Negocios</div>
     </div>
 
     <div style="margin-top:40px" class="reveal">
@@ -889,10 +917,10 @@
 ═══════════════════════════════════════════════════════ -->
 
 <!-- IMPACTO HERO -->
-<section id="impacto-hero">
+<section id="impacto-hero" aria-labelledby="impacto-heading">
   <div class="impacto-inner">
     <div class="reveal">
-      <h2 class="section-heading">RESULTADOS, MÉTRICAS <em>&amp; LOGROS</em></h2>
+      <h2 class="section-heading" id="impacto-heading">RESULTADOS, MÉTRICAS <em>&amp; LOGROS</em></h2>
       <p class="section-intro">Muestra de gestión estratégica con resultados cuantificables</p>
     </div>
     <div class="section-rule reveal" style="margin-top:10px;margin-bottom:0;"></div>
@@ -902,16 +930,16 @@
 </section>
 
 <!-- FAPRO SpA -->
-<section id="fapro">
+<section id="fapro" aria-labelledby="fapro-heading">
   <div class="container">
     <div class="company-label reveal">
-      <h2 class="section-heading">AUTORIDAD DE MARCA <em>&amp; PIPELINE</em></h2>
+      <h3 class="section-heading" id="fapro-heading">AUTORIDAD DE MARCA <em>&amp; PIPELINE</em></h3>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
-        <div class="highlight-icon">🏆</div>
+        <div class="highlight-icon" role="img" aria-hidden="true">🏆</div>
         <div>
           <div class="card-kpi">El Hito</div>
           <div class="card-headline">Winner Fintech Américas 2024</div>
@@ -920,21 +948,21 @@
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">📈</span>
+        <span class="card-icon" role="img" aria-hidden="true">📈</span>
         <div class="card-kpi">Demanda</div>
         <div class="card-headline">Récord de MQLs &amp; Sales Pipeline</div>
         <div class="card-text">Crecimiento sostenido trimestre a trimestre. Estrategia de contenidos enfocada en probabilidades de conversión directa para el equipo comercial.</div>
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">🔍</span>
+        <span class="card-icon" role="img" aria-hidden="true">🔍</span>
         <div class="card-kpi">Reach · SEO</div>
         <div class="card-headline">SEO Score +80</div>
         <div class="card-text">Escalabilidad orgánica y optimización de visibilidad digital en mercados competitivos.</div>
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">🤝</span>
+        <span class="card-icon" role="img" aria-hidden="true">🤝</span>
         <div class="card-kpi">Fidelidad</div>
         <div class="card-headline">85% Attendance Rate</div>
         <div class="card-text">Primer Meet Up histórico con asistencia récord de la cartera de clientes. Evento diseñado y ejecutado como estrategia de comunidad y retención.</div>
@@ -945,16 +973,16 @@
 </section>
 
 <!-- AGENCIA ELEVA -->
-<section id="eleva">
+<section id="eleva" aria-labelledby="eleva-heading">
   <div class="container">
     <div class="company-label reveal">
-      <h2 class="section-heading">PERFORMANCE <em>&amp; ROI</em></h2>
+      <h3 class="section-heading" id="eleva-heading">PERFORMANCE <em>&amp; ROI</em></h3>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
-        <div class="highlight-icon">💰</div>
+        <div class="highlight-icon" role="img" aria-hidden="true">💰</div>
         <div>
           <div class="card-kpi">KPI Ventas</div>
           <div class="card-headline">+85% ROI</div>
@@ -963,14 +991,14 @@
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">📣</span>
+        <span class="card-icon" role="img" aria-hidden="true">📣</span>
         <div class="card-kpi">Escala</div>
         <div class="card-headline">+80% Prospectos Mensuales</div>
         <div class="card-text">Récord histórico de captación mediante optimización avanzada de Paid Media para los clientes Eleva.</div>
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">💬</span>
+        <span class="card-icon" role="img" aria-hidden="true">💬</span>
         <div class="card-kpi">Comunidad</div>
         <div class="card-headline">90% Engagement Rate</div>
         <div class="card-text">Aceleración de interacciones en menos de 90 días para clientes multisectoriales. Estrategia de contenido orientada a la conversación y la conversión simultánea.</div>
@@ -981,16 +1009,16 @@
 </section>
 
 <!-- FUNDACIÓN TEVES -->
-<section id="teves">
+<section id="teves" aria-labelledby="teves-heading">
   <div class="container">
     <div class="company-label reveal">
-      <h2 class="section-heading">OPERACIONES <em>&amp; LOGÍSTICA</em></h2>
+      <h3 class="section-heading" id="teves-heading">OPERACIONES <em>&amp; LOGÍSTICA</em></h3>
     </div>
     <div class="section-rule"></div>
     <div class="impact-grid">
 
       <div class="impact-card highlight reveal">
-        <div class="highlight-icon">💻</div>
+        <div class="highlight-icon" role="img" aria-hidden="true">💻</div>
         <div>
           <div class="card-kpi">Transformación</div>
           <div class="card-headline">Primera Intranet Institucional</div>
@@ -999,14 +1027,14 @@
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">🗺️</span>
+        <span class="card-icon" role="img" aria-hidden="true">🗺️</span>
         <div class="card-kpi">Logística</div>
         <div class="card-headline">+18 Estados · Gira Exitosa</div>
         <div class="card-text">Dirección operativa en gira Corazón Llanero 2017. Gestión de talento VIP y logística 360° al servicio del personal ejecutivo y operativo.</div>
       </div>
 
       <div class="impact-card reveal">
-        <span class="card-icon">📰</span>
+        <span class="card-icon" role="img" aria-hidden="true">📰</span>
         <div class="card-kpi">Prensa &amp; PR</div>
         <div class="card-headline">100% Media Coverage</div>
         <div class="card-text">Estrategia de PR con seguimiento 1 a 1. Garantía de publicación y presencia en medios nacionales tras cada gestión.</div>
@@ -1028,7 +1056,7 @@
 
 
 <!-- CONTACT -->
-<section id="contacto">
+<section id="contacto" aria-label="Contacto">
   <div class="container">
     <div class="contact-inner reveal">
       <div class="contact-big" data-text="¡HABLEMOS!" style="font-size: 2.5rem !important;">¡HABLEMOS!</div>
@@ -1037,22 +1065,13 @@
 
       <div class="contact-grid">
         <div class="contact-block">
-          <div class="contact-block-label">Correo</div>
-          <a href="mailto:sandhygonzalez@gmail.com">sandhygonzalez@gmail.com</a>
-        </div>
-        <div class="contact-block">
-          <div class="contact-block-label">Teléfono / WhatsApp</div>
-          <a href="https://wa.link/87nidb" target="_blank">+58 412 560 4969</a>
-        </div>
-        <div class="contact-block">
           <div class="contact-block-label">LinkedIn</div>
-          <a href="https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/" target="_blank">linkedin.com/in/sandhy-gonzalez-periodista-digital</a>
+          <a href="https://www.linkedin.com/in/sandhy-gonzalez-periodista-digital/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn de Sandhy González (abre en nueva pestaña)">linkedin.com/in/sandhy-gonzalez-periodista-digital</a>
         </div>
       </div>
 
       <div class="contact-extra">
         <p>Ubicación: <span>Caracas, Venezuela</span> · Disponible para proyectos remotos</p>
-        <p style="margin-top:8px">Métodos de pago: <span>PayPal · Binance</span></p>
       </div>
 
       <div class="tagline">"Conectar con el público objetivo es la esencia."</div>
@@ -1060,10 +1079,11 @@
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo" aria-label="Pie de página">
   <p>© 2025 Sandhy J. González M. — Todos los derechos reservados.</p>
-  <p><a href="mailto:sandhygonzalez@gmail.com">sandhygonzalez@gmail.com</a></p>
 </footer>
 
 <script>
