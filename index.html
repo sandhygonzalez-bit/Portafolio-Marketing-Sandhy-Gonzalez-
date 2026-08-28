@@ -22,7 +22,10 @@
   <meta name="twitter:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Fuentes: carga no bloqueante para mejorar FCP/LCP en mobile -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" /></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -35,14 +38,33 @@
       --gold-dim:  #8a6f42;
       --white:     #ffffff;
       --light:     #cccccc;
-      --mid:       #888888;
-      --dark:      #444444;
+      --mid:       #a0a0a0;
+      --dark:      #787878;
       --serif:     'Cormorant Garamond', Georgia, serif;
       --title:     'Montserrat', system-ui, sans-serif;
       --sans:      'Inter', system-ui, sans-serif;
     }
 
+
+    /* Garantiza texto visible durante carga de fuentes */
+    @font-face {
+      font-family: 'Montserrat';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-display: swap;
+    }
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { transition: none; opacity: 1; transform: none; }
+      .tl-item { transition: none; opacity: 1; transform: none; }
+    }
 
     body {
       background: var(--bg);
@@ -53,6 +75,17 @@
       overflow-x: hidden;
     }
 
+
+    /* Skip to content */
+    .skip-link {
+      position: absolute; top: -100%; left: 0;
+      background: var(--gold); color: #0d0d0d;
+      padding: 10px 20px; font-size: 0.9rem; font-weight: 700;
+      z-index: 9999; text-decoration: none; border-radius: 0 0 6px 0;
+      transition: top 0.2s;
+      /* Asegurar contraste: dorado #c9a96e sobre negro #0d0d0d → ratio 7.1 */
+    }
+    .skip-link:focus { top: 0; outline: 3px solid var(--white); outline-offset: 2px; }
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -400,7 +433,7 @@
       padding: 20px 48px;
       display: flex; justify-content: space-between; align-items: center;
     }
-    footer p { font-size: 0.75rem; color: var(--dark); }
+    footer p { font-size: 0.75rem; color: #a0a0a0; }
     footer a { color: var(--gold-dim); text-decoration: none; }
 
     /* ── SCROLL REVEAL ── */
