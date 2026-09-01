@@ -22,10 +22,8 @@
   <meta name="twitter:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Fuentes: carga no bloqueante para mejorar FCP/LCP en mobile -->
-  <!-- Preload crítico: solo Montserrat 800 para el nombre (LCP) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap&subset=latin" />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  <!-- Fuentes: un solo request, carga no bloqueante -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" /></noscript>
   <style>
@@ -653,7 +651,7 @@
     <div>
       <p class="hero-tag">Portafolio</p>
       <div class="hero-rule"></div>
-      <h1 class="hero-name" id="hero-heading" aria-label="Sandhy González" style="content-visibility:auto">
+      <h1 class="hero-name" id="hero-heading" aria-label="Sandhy González">
         <span aria-hidden="true">SANDHY</span>
         <span aria-hidden="true">GONZÁLEZ</span>
       </h1>
@@ -1172,44 +1170,34 @@
 </footer>
 
 <script>
-  // Ejecutar todo DESPUÉS del primer paint usando doble rAF
-  // Esto garantiza cero interferencia con FCP/LCP y elimina reflow forzado
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() {
+  // Stagger: batch write antes del observer, sin leer geometría
+  (function() {
+    var tlItems = document.querySelectorAll('.tl-item');
+    for (var i = 0; i < tlItems.length; i++) {
+      tlItems[i].style.setProperty('--stagger', (i % 6) * 0.08 + 's');
+    }
+  })();
 
-      // 1. Stagger timeline: batch write puro, sin leer geometría
-      var tlItems = document.querySelectorAll('.tl-item');
-      for (var i = 0; i < tlItems.length; i++) {
-        tlItems[i].style.setProperty('--stagger', (i % 6) * 0.08 + 's');
-      }
-
-      // 2. Observer con doble rAF en callback para separar
-      //    la detección de intersección de la escritura de clase
-      var revealObserver = new IntersectionObserver(function(entries) {
-        var toReveal = [];
-        // Fase de lectura: recopilar los que intersectan
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) toReveal.push(entry.target);
-        });
-        if (!toReveal.length) return;
-        // Fase de escritura: en rAF separado del ciclo de layout
-        requestAnimationFrame(function() {
-          toReveal.forEach(function(el) {
-            el.classList.add('visible');
-            // Desconectar tras animar para liberar memoria
-            revealObserver.unobserve(el);
-          });
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-      // Excluir hero: ya visibles por CSS, no necesitan observer
-      document.querySelectorAll('.reveal, .tl-item').forEach(function(el) {
-        if (!el.closest('#hero') && !el.closest('#impacto-hero')) {
-          revealObserver.observe(el);
-        }
-      });
-
+  // Observer: fases separadas lectura → escritura en un solo rAF
+  var revealObserver = new IntersectionObserver(function(entries) {
+    var toReveal = [];
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) toReveal.push(entry.target);
     });
+    if (!toReveal.length) return;
+    requestAnimationFrame(function() {
+      toReveal.forEach(function(el) {
+        el.classList.add('visible');
+        revealObserver.unobserve(el);
+      });
+    });
+  }, { threshold: 0.08 });
+
+  // Hero ya visible por CSS — excluirlo del observer
+  document.querySelectorAll('.reveal, .tl-item').forEach(function(el) {
+    if (!el.closest('#hero') && !el.closest('#impacto-hero')) {
+      revealObserver.observe(el);
+    }
   });
 </script>
 </body>
