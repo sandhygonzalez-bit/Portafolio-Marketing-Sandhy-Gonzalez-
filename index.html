@@ -23,7 +23,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Fuentes: carga no bloqueante para mejorar FCP/LCP en mobile -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  <!-- Preload crítico: solo Montserrat 800 para el nombre (LCP) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap&subset=latin" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" /></noscript>
   <style>
@@ -164,6 +166,7 @@
       font-family: var(--serif); font-size: 320px; font-weight: 700;
       color: rgba(201,169,110,0.04); line-height: 1; pointer-events: none;
       user-select: none;
+      will-change: transform;
     }
     .hero-tag {
       font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
@@ -241,6 +244,11 @@
 
     /* ── SECTION WRAPPER ── */
     section { padding: 32px 0; }
+    /* Containment: secciones debajo del fold no afectan layout global */
+    #skills, #experience, #brands, #impacto-hero,
+    #fapro, #eleva, #teves, #cierre, #contacto {
+      contain: layout style;
+    }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 
     .section-heading {
@@ -461,6 +469,12 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* Hero y impacto-hero: visibles sin JS para mejorar LCP/FCP */
+    #hero .reveal,
+    #impacto-hero .reveal {
+      opacity: 1; transform: none; transition: none;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -639,7 +653,7 @@
     <div>
       <p class="hero-tag">Portafolio</p>
       <div class="hero-rule"></div>
-      <h1 class="hero-name" id="hero-heading" aria-label="Sandhy González">
+      <h1 class="hero-name" id="hero-heading" aria-label="Sandhy González" style="content-visibility:auto">
         <span aria-hidden="true">SANDHY</span>
         <span aria-hidden="true">GONZÁLEZ</span>
       </h1>
@@ -1158,30 +1172,44 @@
 </footer>
 
 <script>
-  // Stagger: asignar delays ANTES de que el observer arranque
-  // para evitar forzar reflow al mezclar lecturas y escrituras DOM
-  (function() {
-    var tlItems = document.querySelectorAll('.tl-item');
-    // Batch write: asignar custom property sin leer geometría
-    for (var i = 0; i < tlItems.length; i++) {
-      tlItems[i].style.setProperty('--stagger', (i % 6) * 0.08 + 's');
-    }
-  })();
+  // Ejecutar todo DESPUÉS del primer paint usando doble rAF
+  // Esto garantiza cero interferencia con FCP/LCP y elimina reflow forzado
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
 
-  // Scroll reveal con rAF para evitar layout thrashing
-  var revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        // rAF garantiza que la escritura ocurre fuera del ciclo de layout
-        requestAnimationFrame(function() {
-          entry.target.classList.add('visible');
-        });
+      // 1. Stagger timeline: batch write puro, sin leer geometría
+      var tlItems = document.querySelectorAll('.tl-item');
+      for (var i = 0; i < tlItems.length; i++) {
+        tlItems[i].style.setProperty('--stagger', (i % 6) * 0.08 + 's');
       }
-    });
-  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.reveal, .tl-item').forEach(function(el) {
-    revealObserver.observe(el);
+      // 2. Observer con doble rAF en callback para separar
+      //    la detección de intersección de la escritura de clase
+      var revealObserver = new IntersectionObserver(function(entries) {
+        var toReveal = [];
+        // Fase de lectura: recopilar los que intersectan
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) toReveal.push(entry.target);
+        });
+        if (!toReveal.length) return;
+        // Fase de escritura: en rAF separado del ciclo de layout
+        requestAnimationFrame(function() {
+          toReveal.forEach(function(el) {
+            el.classList.add('visible');
+            // Desconectar tras animar para liberar memoria
+            revealObserver.unobserve(el);
+          });
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      // Excluir hero: ya visibles por CSS, no necesitan observer
+      document.querySelectorAll('.reveal, .tl-item').forEach(function(el) {
+        if (!el.closest('#hero') && !el.closest('#impacto-hero')) {
+          revealObserver.observe(el);
+        }
+      });
+
+    });
   });
 </script>
 </body>
