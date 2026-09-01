@@ -301,6 +301,23 @@
     .edu-school { font-size: 0.8rem; color: var(--mid); font-style: italic; margin: 2px 0; }
     .edu-year { font-size: 0.75rem; color: var(--gold); }
 
+
+    /* Segunda fila de skills — sectores y logros */
+    .skills-grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px;
+    }
+    .skills-divider {
+      width: 100%; height: 1px; background: var(--bg4);
+      margin: 28px 0 20px;
+    }
+    .skills-sub-heading {
+      font-family: var(--title); font-size: 0.95rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.05em; margin-bottom: 20px;
+    }
+    .skills-sub-heading em { color: var(--gold); font-style: normal; }
+    @media (max-width: 900px) {
+      .skills-grid-2 { grid-template-columns: 1fr; }
+    }
     /* ── EXPERIENCE TIMELINE ── */
     #experience { background: var(--bg); }
     .timeline {
@@ -316,7 +333,8 @@
     .tl-item {
       position: relative; padding: 0 36px 20px;
       opacity: 0; transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.5s ease var(--stagger, 0s),
+                  transform 0.5s ease var(--stagger, 0s);
     }
     .tl-item.visible { opacity: 1; transform: translateY(0); }
 
@@ -714,8 +732,48 @@
       <p class="section-intro">Competencias, certificaciones y formación académica</p>
     </div>
 
+    <!-- FILA 1: Formación, Certificaciones, Habilidades e Idiomas -->
     <div class="skills-grid">
-      <!-- Col 1 -->
+
+      <!-- Col 1: Formación Académica -->
+      <div class="skills-col reveal">
+        <div class="skills-col-title">Formación Académica</div>
+        <div class="edu-item">
+          <div class="edu-degree">Especialización en Periodismo Digital</div>
+          <div class="edu-school">Universidad Monteávila</div>
+          <div class="edu-year">2017 – 2018</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Licenciada en Comunicación Social</div>
+          <div class="edu-school">Universidad Santa María · Mención: Comunicaciones Corporativas</div>
+          <div class="edu-year">2006 – 2011</div>
+        </div>
+
+        <div class="skills-col-title" style="margin-top:24px">Idiomas</div>
+        <div class="lang-item">
+          <div class="lang-header"><span class="lang-name">Español</span><span class="lang-level">Nativo</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item">
+          <div class="lang-header"><span class="lang-name">Inglés</span><span class="lang-level">Intermedio</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:55%"></div></div>
+        </div>
+      </div>
+
+      <!-- Col 2: Certificaciones -->
+      <div class="skills-col reveal">
+        <div class="skills-col-title">Certificaciones</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Fundamentos de Marketing</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Content Marketing Avanzado</div>
+        <div class="cert-item"><span class="cert-check">✓</span> SEO Técnico</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Copywriting con Técnicas de Storytelling</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Inteligencia Artificial para Content Marketing</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Creación de Contenido con IA</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Email Marketing</div>
+        <div class="cert-item"><span class="cert-check">✓</span> Locución</div>
+      </div>
+
+      <!-- Col 3: Habilidades Clave -->
       <div class="skills-col reveal">
         <div class="skills-col-title">Habilidades Clave</div>
         <div class="skill-item"><span class="skill-dash">—</span> Marketing de contenido estratégico</div>
@@ -728,46 +786,22 @@
         <div class="skill-item"><span class="skill-dash">—</span> Gestión de eventos</div>
         <div class="skill-item"><span class="skill-dash">—</span> Liderazgo y management</div>
         <div class="skill-item"><span class="skill-dash">—</span> Pensamiento analítico / data-driven</div>
-        <div class="skill-item"><span class="skill-dash">—</span> Copywriting & Storytelling</div>
+        <div class="skill-item"><span class="skill-dash">—</span> Copywriting &amp; Storytelling</div>
         <div class="skill-item"><span class="skill-dash">—</span> IA aplicada al marketing de contenidos</div>
-
-        <div class="skills-col-title" style="margin-top:28px">Idiomas</div>
-        <div class="lang-item">
-          <div class="lang-header"><span class="lang-name">Español</span><span class="lang-level">Nativo</span></div>
-          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
-        </div>
-        <div class="lang-item">
-          <div class="lang-header"><span class="lang-name">Inglés</span><span class="lang-level">Intermedio</span></div>
-          <div class="lang-bar"><div class="lang-fill" style="width:55%"></div></div>
-        </div>
       </div>
 
-      <!-- Col 2 -->
-      <div class="skills-col reveal">
-        <div class="skills-col-title">Certificaciones</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Fundamentos de Marketing</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Content Marketing Avanzado</div>
-        <div class="cert-item"><span class="cert-check">✓</span> SEO Técnico</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Copywriting con Técnicas de Storytelling</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Inteligencia Artificial para Content Marketing</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Creación de Contenido con IA</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Email Marketing</div>
-        <div class="cert-item"><span class="cert-check">✓</span> Locución</div>
+    </div>
 
-        <div class="skills-col-title" style="margin-top:28px">Educación</div>
-        <div class="edu-item">
-          <div class="edu-degree">Especialización en Periodismo Digital</div>
-          <div class="edu-school">Universidad Monteávila</div>
-          <div class="edu-year">2017 – 2018</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-degree">Licenciada en Comunicación Social</div>
-          <div class="edu-school">Universidad Santa María · Mención: Comunicaciones Corporativas</div>
-          <div class="edu-year">2006 – 2011</div>
-        </div>
-      </div>
+    <!-- Separador visual -->
+    <div class="skills-divider reveal"></div>
 
-      <!-- Col 3 -->
+    <!-- FILA 2: Sectores y Logros -->
+    <div class="reveal">
+      <h3 class="skills-sub-heading">SECTORES <em>&amp; LOGROS</em> DESTACADOS</h3>
+    </div>
+    <div class="skills-grid-2">
+
+      <!-- Sectores -->
       <div class="skills-col reveal">
         <div class="skills-col-title">Sectores de Experiencia</div>
         <div class="sectors-grid">
@@ -780,8 +814,11 @@
           <span class="sector-pill">Educación / e-learning</span>
           <span class="sector-pill">Entretenimiento / Cultura</span>
         </div>
+      </div>
 
-        <div class="skills-col-title" style="margin-top:32px">Logros Destacados</div>
+      <!-- Logros -->
+      <div class="skills-col reveal">
+        <div class="skills-col-title">Logros Destacados</div>
         <div class="achievement">
           <div class="achievement-title">🏆 Premio Platino Fintech Americas 2024</div>
           <div class="achievement-desc">Pitch de postulación de mi autoría. Fapro SpA ganó el reconocimiento gracias a la estrategia de contenido y la gestión que lideré.</div>
@@ -799,6 +836,7 @@
           <div class="achievement-desc">Reportajes y coberturas para Telesur con audiencia digital global.</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1120,20 +1158,30 @@
 </footer>
 
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  // Stagger: asignar delays ANTES de que el observer arranque
+  // para evitar forzar reflow al mezclar lecturas y escrituras DOM
+  (function() {
+    var tlItems = document.querySelectorAll('.tl-item');
+    // Batch write: asignar custom property sin leer geometría
+    for (var i = 0; i < tlItems.length; i++) {
+      tlItems[i].style.setProperty('--stagger', (i % 6) * 0.08 + 's');
+    }
+  })();
+
+  // Scroll reveal con rAF para evitar layout thrashing
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        // rAF garantiza que la escritura ocurre fuera del ciclo de layout
+        requestAnimationFrame(function() {
+          entry.target.classList.add('visible');
+        });
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.reveal, .tl-item').forEach(el => observer.observe(el));
-
-  // Stagger timeline items
-  document.querySelectorAll('.tl-item').forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 6) * 0.08}s`;
+  document.querySelectorAll('.reveal, .tl-item').forEach(function(el) {
+    revealObserver.observe(el);
   });
 </script>
 </body>
