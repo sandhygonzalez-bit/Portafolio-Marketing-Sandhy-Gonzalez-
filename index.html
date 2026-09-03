@@ -21,11 +21,20 @@
   <meta name="twitter:title" content="Sandhy González — Content Manager · Organic Growth · AI Specialist" />
   <meta name="twitter:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Fuentes: carga asíncrona sin reflow inline -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Fuentes: un solo request, carga no bloqueante -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
-  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" /></noscript>
+  <link id="gfonts" rel="stylesheet" media="print"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+  </noscript>
+  <script>
+    // Activar fuentes tras el load — fuera del ciclo de layout crítico
+    window.addEventListener('load', function() {
+      var f = document.getElementById('gfonts');
+      if (f) f.media = 'all';
+    });
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -243,7 +252,7 @@
     /* ── SECTION WRAPPER ── */
     section { padding: 32px 0; }
     /* Containment: secciones debajo del fold no afectan layout global */
-    #skills, #experience, #brands, #impacto-hero,
+    #servicios, #skills, #experience, #brands, #impacto-hero,
     #fapro, #eleva, #teves, #cierre, #contacto {
       contain: layout style;
     }
@@ -256,6 +265,56 @@
     .section-heading em { color: var(--gold); font-style: normal; }
     .section-intro { font-size: 0.88rem; color: var(--mid); margin-top: 4px; }
 
+
+    /* ── SERVICIOS ── */
+    #servicios { background: var(--bg); }
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .servicio-card {
+      background: var(--bg3);
+      border: 1px solid var(--bg4);
+      border-radius: 8px;
+      padding: 24px 20px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .servicio-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.35s ease;
+    }
+    .servicio-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .servicio-card:hover::before { height: 100%; }
+    .servicio-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .servicio-name {
+      font-family: var(--title);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .servicio-desc {
+      font-size: 0.78rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .servicios-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    }
+    @media (max-width: 540px) {
+      .servicios-grid { grid-template-columns: 1fr; }
+    }
     /* ── SKILLS ── */
     #skills { background: var(--bg2); }
     .skills-grid {
@@ -635,6 +694,7 @@
   <a href="#hero" class="nav-logo" aria-label="Sandhy González — Inicio">Sandhy González</a>
   <ul class="nav-links" role="list">
     <li><a href="#hero">Perfil</a></li>
+    <li><a href="#servicios">Servicios</a></li>
     <li><a href="#skills">Habilidades</a></li>
     <li><a href="#experience">Experiencia</a></li>
     <li><a href="#brands">Marcas</a></li>
@@ -732,6 +792,59 @@
         <div class="exp-company">Telesur · Primicias24 · PropTech Latam</div>
         <div class="exp-desc">Redacté contenidos especializados en fintech, proptech, política y cultura. Gestioné email marketing, SEO y redes sociales.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section id="servicios" aria-labelledby="servicios-heading">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-heading" id="servicios-heading">SERVICIOS <em>PROFESIONALES</em></h2>
+      <p class="section-intro">Áreas de especialización y entrega de valor</p>
+    </div>
+
+    <div class="servicios-grid">
+
+      <!-- Fila 1 -->
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">📱</div>
+        <div class="servicio-name">Marketing Digital</div>
+        <div class="servicio-desc">Estrategia de contenido multiformato, gestión de redes sociales y campañas orientadas a resultados medibles en entornos B2B y B2C.</div>
+      </div>
+
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">🗂️</div>
+        <div class="servicio-name">Gestión de Proyectos</div>
+        <div class="servicio-desc">Coordinación de equipos y flujos de trabajo creativos. Planificación estratégica, seguimiento de KPIs y entrega de proyectos digitales.</div>
+      </div>
+
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">🔍</div>
+        <div class="servicio-name">SEO · GEO · AEO</div>
+        <div class="servicio-desc">Optimización orgánica para motores de búsqueda, motores de respuesta con IA y búsqueda generativa. Contenido que posiciona y convierte.</div>
+      </div>
+
+      <!-- Fila 2 -->
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">📰</div>
+        <div class="servicio-name">PR &amp; Relaciones con Medios</div>
+        <div class="servicio-desc">Estrategia de relaciones públicas, gestión de prensa y cobertura en medios nacionales e internacionales con seguimiento 1 a 1.</div>
+      </div>
+
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">🎯</div>
+        <div class="servicio-name">Ads &amp; Paid Media</div>
+        <div class="servicio-desc">Diseño y optimización de campañas pagadas en Meta y Google Ads. Segmentación avanzada, A/B testing y maximización del ROI.</div>
+      </div>
+
+      <div class="servicio-card reveal">
+        <div class="servicio-icon" role="img" aria-hidden="true">🤖</div>
+        <div class="servicio-name">AI Content</div>
+        <div class="servicio-desc">Producción de contenido asistido por inteligencia artificial con supervisión estratégica. Flujos de trabajo eficientes sin perder voz de marca.</div>
+      </div>
+
     </div>
   </div>
 </section>
