@@ -20,16 +20,21 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Sandhy González — Content Manager · Organic Growth · AI Specialist" />
   <meta name="twitter:description" content="Portafolio profesional con 14 años de experiencia en marketing de contenidos, SEO y campañas digitales en LATAM y EE.UU." />
+  <!-- Preconnect: ambos orígenes de Google Fonts con crossorigin correcto -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <!-- Fuentes: carga asíncrona sin reflow inline -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link id="gfonts" rel="stylesheet" media="print"
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+  <!-- CSS de fuentes con fetchpriority high para acortar cadena de red -->
+  <link id="gfonts"
+        rel="stylesheet"
+        media="print"
+        fetchpriority="high"
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500&family=Cormorant+Garamond:ital,wght@0,700;1,400&display=swap" />
   </noscript>
   <script>
-    // Activar fuentes tras el load — fuera del ciclo de layout crítico
     window.addEventListener('load', function() {
       var f = document.getElementById('gfonts');
       if (f) f.media = 'all';
@@ -50,7 +55,7 @@
       --mid:       #a0a0a0;
       --dark:      #787878;
       --serif:     'Cormorant Garamond', Georgia, serif;
-      --title:     'Montserrat', system-ui, sans-serif;
+      --title:     'Montserrat', 'Montserrat-Fallback', system-ui, sans-serif;
       --sans:      'Inter', system-ui, sans-serif;
     }
 
@@ -67,6 +72,16 @@
     @font-face {
       font-family: 'Cormorant Garamond';
       font-display: swap;
+    }
+
+    /* Fallback ajustado para Montserrat — reduce CLS en LCP */
+    @font-face {
+      font-family: 'Montserrat-Fallback';
+      src: local('Arial Black'), local('Arial Bold'), local('Helvetica Neue');
+      size-adjust: 105%;
+      ascent-override: 90%;
+      descent-override: 22%;
+      line-gap-override: 0%;
     }
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) {
@@ -185,6 +200,8 @@
       font-family: var(--title); font-size: clamp(2.8rem, 5vw, 4.5rem);
       font-weight: 800; color: var(--white); line-height: 0.95;
       letter-spacing: -0.01em;
+      /* Hint al navegador: este texto es prioritario para el paint */
+      contain: layout style;
     }
     .hero-name span { display: block; }
     .hero-title {
